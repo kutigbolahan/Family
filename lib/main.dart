@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 children: <Widget>[
                   Container(
-                    height: 40,
+                  
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
                         Radius.circular(20)
@@ -77,23 +77,27 @@ class HomePage extends StatelessWidget {
                    
                    
                     
-                    padding: const EdgeInsets.only(top:10),
+                    padding: const EdgeInsets.all(5),
                     child: Column(
                       children: <Widget>[
-                        Icon(Icons.calendar_today, color: Colors.white,),
-                        SizedBox(height: 10,),
+                      Container(
+                        width: 50,
+                        height: 50,
+                        child: Image.asset('assets/images/calender.png',fit: BoxFit.cover,)),
+                        
+                        SizedBox(height: 5,),
                         Text('Calender', style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.bold
                         )),
-                        SizedBox(height: 10,),
-                        Text('March, Wednesday', style: TextStyle(
+                        SizedBox(height: 5,),
+                        Text('March, Thursday', style: TextStyle(
                           color: Colors.white,
                           fontSize: 10,
                           fontWeight: FontWeight.normal
                         )),
-                        SizedBox(height: 10,),
+                        SizedBox(height: 5,),
                         Text('3 Events', style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
