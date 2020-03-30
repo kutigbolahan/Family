@@ -16,10 +16,10 @@ void main() => runApp(
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeNotifier>(context);
+    final themep = Provider.of<ThemeNotifier>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-        theme: theme.getThemeData,
+        theme: themep.getThemeData,
         home: HomePage(),
       );
   }
