@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.purple[900],
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(26.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
