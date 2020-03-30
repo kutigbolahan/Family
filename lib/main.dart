@@ -1,15 +1,27 @@
+import 'package:Family/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => ThemeNotifier(isdarkTheme: true),
+          )
+        ],
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeNotifier>(context);
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primaryColor: Colors.white),
-      home: HomePage(),
-    );
+      debugShowCheckedModeBanner: false,
+        theme: theme.getThemeData,
+        home: HomePage(),
+      );
   }
 }
 
@@ -18,6 +30,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeNotifier>(context);
     return Scaffold(
       backgroundColor: Colors.purple[900],
       body: SafeArea(
@@ -42,15 +55,20 @@ class HomePage extends StatelessWidget {
                       Text(
                         'Home',
                         style: TextStyle(color: Colors.white, fontSize: 12),
-                      )
+                      ),
                     ],
                   ),
+                  Switch(
+                    activeColor: Colors.purple,
+                      value: theme.isdarkTheme,
+                      onChanged: (value) {
+                        theme.setThemeData = value;
+                      }),
                   Container(
                       decoration: BoxDecoration(
-                        color: Colors.red,
-                        shape: BoxShape.circle,
-                        // border: Border.all(width: 10, color: Colors.red)
-                      ),
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 10, color: Colors.red)),
                       child: Icon(
                         Icons.confirmation_number,
                         color: Colors.white,
@@ -60,9 +78,9 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 70),
               GridView.count(
                 shrinkWrap: true,
-                crossAxisSpacing: 10,
+                crossAxisSpacing: 20,
                 crossAxisCount: 2,
-                mainAxisSpacing: 10,
+                mainAxisSpacing: 20,
                 physics: ScrollPhysics(),
                 padding: const EdgeInsets.all(20),
                 children: <Widget>[
